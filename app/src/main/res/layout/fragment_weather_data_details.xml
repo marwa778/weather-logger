@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
+        <import type="java.util.Date" />
+        <import type="java.text.SimpleDateFormat" />
         <variable name="currentWeatherData" type="com.example.weatherlogger.db.currentweatherdata.CurrentWeatherData"/>
     </data>
 
@@ -14,25 +16,16 @@
         android:padding="20dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/details_temperature"
+            android:id="@+id/details_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:text="@{String.valueOf(currentWeatherData.temperature)}"
+            android:textSize="20sp"
+            android:text="@{currentWeatherData.name}"
+            android:textColor="@android:color/holo_blue_dark"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/details_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_temperature"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/details_description"
@@ -41,69 +34,75 @@
             android:textSize="18sp"
             android:text="@{currentWeatherData.description}"
             android:textColor="@android:color/black"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_date"/>
+            app:layout_constraintTop_toBottomOf="@id/details_name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_temperature_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp"
+            android:text="@string/temperature"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_description"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:text="@{String.valueOf(currentWeatherData.temperature)}"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@id/details_temperature_text"
+            app:layout_constraintTop_toBottomOf="@id/details_description"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_humidity_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp"
+            android:text="@string/humidity"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_temperature"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/details_humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:text="@{String.valueOf(currentWeatherData.humidity)}"
             android:textColor="@android:color/black"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@id/details_humidity_text"
+            app:layout_constraintTop_toBottomOf="@id/details_temperature"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_wind_speed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp"
+            android:text="@string/wind_speed"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_description"/>
+            app:layout_constraintTop_toBottomOf="@id/details_humidity"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/details_wind_speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:text="@{String.valueOf(currentWeatherData.speed)}"
             android:textColor="@android:color/black"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@id/details_wind_speed_text"
             app:layout_constraintTop_toBottomOf="@id/details_humidity"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/details_sunrise"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_wind_speed"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/details_sunset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_sunrise"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/details_country"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_sunset"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/details_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_country"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -12,11 +12,13 @@
         tools:layout="@layout/fragment_weather_data_list" >
         <action
             android:id="@+id/action_weatherDataListFragment_to_weatherDataDetailsFragment"
-            app:destination="@id/weatherDataDetailsFragment">
+            app:destination="@id/weatherDataDetailsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right">
             <argument
                 android:name="weatherDate"
-                app:argType="long"
-                android:defaultValue="0L" />
+                android:defaultValue="0L"
+                app:argType="long" />
         </action>
     </fragment>
 
