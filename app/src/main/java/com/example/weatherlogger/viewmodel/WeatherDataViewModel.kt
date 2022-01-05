@@ -2,14 +2,14 @@ package com.example.weatherlogger.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.weatherlogger.db.currentweatherdata.CurrentWeatherData
-import com.example.weatherlogger.repository.LocationRepository
-import com.example.weatherlogger.repository.WeatherDataRepository
+import com.example.weatherlogger.repository.repositoryinterface.LocationRepositoryInterface
+import com.example.weatherlogger.repository.repositoryinterface.WeatherDataRepositoryInterface
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class WeatherDataViewModel @Inject constructor(
-    private val weatherDataRepository: WeatherDataRepository,
-    private val locationRepository: LocationRepository,
+    private val weatherDataRepository: WeatherDataRepositoryInterface,
+    private val locationRepository: LocationRepositoryInterface,
 ): ViewModel() {
 
     suspend fun saveCurrentWeatherData() {

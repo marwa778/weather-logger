@@ -1,4 +1,4 @@
-package com.example.weatherlogger.repository
+package com.example.weatherlogger.repository.impl
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.core.app.ActivityCompat
 import com.example.weatherlogger.network.responses.Coordinates
+import com.example.weatherlogger.repository.repositoryinterface.LocationRepositoryInterface
 import com.google.android.gms.location.*
 import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.tasks.CancellationToken
@@ -19,7 +20,7 @@ const val REQUEST_LOCATION_PERMISSION_CODE = 100
 
 class LocationRepository @Inject constructor(
     private val activity: Activity,
-    private val fusedLocationClient: FusedLocationProviderClient) {
+    private val fusedLocationClient: FusedLocationProviderClient) : LocationRepositoryInterface {
 
     private fun checkLocationPermissionNotGranted() =
         (ActivityCompat.checkSelfPermission(
@@ -43,7 +44,7 @@ class LocationRepository @Inject constructor(
     }
 
     @SuppressLint("MissingPermission")
-    suspend fun getCurrentLocation(): Coordinates = suspendCoroutine { cont ->
+    override suspend fun getCurrentLocation(): Coordinates = suspendCoroutine { cont ->
         if(!checkLocationPermissionNotGranted()) {
             val token = object : CancellationToken() {
                 override fun isCancellationRequested() = false

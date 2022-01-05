@@ -1,22 +1,23 @@
-package com.example.weatherlogger.repository
+package com.example.weatherlogger.repository.impl
 
 import com.example.weatherlogger.BuildConfig
 import com.example.weatherlogger.db.currentweatherdata.CurrentWeatherData
 import com.example.weatherlogger.db.currentweatherdata.CurrentWeatherDataDao
 import com.example.weatherlogger.network.responses.CurrentWeatherDataResponse
 import com.example.weatherlogger.network.services.CurrentWeatherDataService
+import com.example.weatherlogger.repository.repositoryinterface.WeatherDataRepositoryInterface
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class WeatherDataRepository @Inject constructor (
     private val currentWeatherDataService: CurrentWeatherDataService,
-    private val currentWeatherDataDao: CurrentWeatherDataDao) {
+    private val currentWeatherDataDao: CurrentWeatherDataDao) : WeatherDataRepositoryInterface {
 
-    fun getAllWeatherData(): Flow<List<CurrentWeatherData>> = currentWeatherDataDao.getAllWeatherData()
+    override fun getAllWeatherData(): Flow<List<CurrentWeatherData>> = currentWeatherDataDao.getAllWeatherData()
 
-    fun getWeatherDataByDate(date: Long): Flow<CurrentWeatherData> = currentWeatherDataDao.getWeatherDataByDate(date)
+    override fun getWeatherDataByDate(date: Long): Flow<CurrentWeatherData> = currentWeatherDataDao.getWeatherDataByDate(date)
 
-    suspend fun saveCurrentWeatherData(latitude: Double, longitude: Double) {
+    override suspend fun saveCurrentWeatherData(latitude: Double, longitude: Double) {
         val currentWeatherDataResponse = currentWeatherDataService
             .getCurrentWeatherDataByCoordinates(latitude,longitude, BuildConfig.CURRENT_WEATHER_API_KEY)
         val currentWeatherData = mapCurrentWeatherDataResponseToCurrentWeatherData(currentWeatherDataResponse)
