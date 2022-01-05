@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.WeatherDataDetailsFragment">
+    tools:context=".view.WeatherDataDetailsFragment"
+    android:padding="20dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/details_temperature"
@@ -36,5 +37,65 @@
         android:layout_marginTop="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/details_date"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_description"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_wind_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_humidity"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_sunrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_wind_speed"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_sunset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_sunrise"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_sunset"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_country"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

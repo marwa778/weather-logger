@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/weatherDataListFragment">
+
+    <fragment
+        android:id="@+id/weatherDataListFragment"
+        android:name="com.example.weatherlogger.view.WeatherDataListFragment"
+        android:label="fragment_weather_data_list"
+        tools:layout="@layout/fragment_weather_data_list" >
+        <action
+            android:id="@+id/action_weatherDataListFragment_to_weatherDataDetailsFragment"
+            app:destination="@id/weatherDataDetailsFragment">
+            <argument
+                android:name="weatherDate"
+                app:argType="long"
+                android:defaultValue="0L" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherDataDetailsFragment"
+        android:name="com.example.weatherlogger.view.WeatherDataDetailsFragment"
+        android:label="fragment_weather_data_details"
+        tools:layout="@layout/fragment_weather_data_details">
+        <argument
+            android:name="weatherDate"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+</navigation>

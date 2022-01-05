@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -82,10 +83,11 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$androidx_test_version"
     androidTestImplementation "androidx.test:core-ktx:$androidx_test_version"
 
-    // required if you want to use Mockito for unit tests
     testImplementation 'org.mockito:mockito-core:3.4.6'
     testImplementation 'android.arch.core:core-testing:1.1.1'
 
-    //implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    //implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    def nav_version = "2.3.5"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
 }

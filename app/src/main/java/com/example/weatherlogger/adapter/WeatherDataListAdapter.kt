@@ -53,7 +53,7 @@ class WeatherDataListAdapter(
         fun bind(currentWeatherData: CurrentWeatherData) {
             binding.temperature.text = currentWeatherData.temperature.toString()
             binding.date.text = SimpleDateFormat(
-                "h:mm a").format(
+                "dd-MM-yyyy  h:mm a").format(
                 Date(currentWeatherData.date * 1000)
             )
         }

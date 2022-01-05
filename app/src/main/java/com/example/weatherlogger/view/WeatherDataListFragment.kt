@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.coroutineScope
+import androidx.navigation.findNavController
 import com.example.weatherlogger.adapter.WeatherDataListAdapter
 import com.example.weatherlogger.databinding.FragmentWeatherDataListBinding
 import com.example.weatherlogger.viewmodel.WeatherDataViewModel
@@ -42,13 +43,11 @@ class WeatherDataListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.weatherDataList
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val weatherDataListAdapter = WeatherDataListAdapter({
-            /*val action = FullScheduleFragmentDirections
-                .actionFullScheduleFragmentToStopScheduleFragment(
-                    stopName = it.stopName
-                )
-            view.findNavController().navigate(action)*/
-        })
+        val weatherDataListAdapter = WeatherDataListAdapter{
+            val action = WeatherDataListFragmentDirections
+                .actionWeatherDataListFragmentToWeatherDataDetailsFragment(it.date)
+            view.findNavController().navigate(action)
+        }
         recyclerView.adapter = weatherDataListAdapter
 
         lifecycle.coroutineScope.launch {
