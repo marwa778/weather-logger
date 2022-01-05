@@ -2,6 +2,8 @@ package com.example.weatherlogger
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.coroutineScope
 import com.example.weatherlogger.viewmodel.WeatherDataViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,4 +31,21 @@ class MainActivity : AppCompatActivity() {
             viewModel.saveCurrentWeatherData()
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.top_app_bar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) =
+        when (item.itemId) {
+            R.id.save -> {
+                lifecycle.coroutineScope.launch {
+                    viewModel.saveCurrentWeatherData()
+                }
+                true
+            }
+            else -> false
+        }
 }

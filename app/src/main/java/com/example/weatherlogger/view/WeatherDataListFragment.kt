@@ -52,8 +52,6 @@ class WeatherDataListFragment : Fragment() {
         recyclerView.adapter = weatherDataListAdapter
 
         lifecycle.coroutineScope.launch {
-            viewModel.saveCurrentWeatherData()
-
             viewModel.getAllWeatherData().collect {
                 weatherDataListAdapter.submitList(it)
             }
