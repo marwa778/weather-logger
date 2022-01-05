@@ -1,7 +1,5 @@
 package com.example.weatherlogger.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weatherlogger.db.currentweatherdata.CurrentWeatherData
 import com.example.weatherlogger.repository.repositoryinterface.LocationRepositoryInterface
